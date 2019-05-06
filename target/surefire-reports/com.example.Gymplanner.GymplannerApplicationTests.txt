@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.example.Gymplanner.GymplannerApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.282 s - in com.example.Gymplanner.GymplannerApplicationTests

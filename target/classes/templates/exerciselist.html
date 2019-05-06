@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+<title>Exercise List</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" />
+
+<style>
+tr {
+	text-align: center;
+}
+
+h1 {
+	padding-top: 20px;
+	padding-bottom: 15px;
+	text-align: center;
+}
+
+table {
+	font-size: large;
+	background-color: rgb(249, 249, 249);
+	border-radius: 15px 15px 15px 15px;
+}
+
+div.bgview {
+	background-image:
+		url(https://images.pexels.com/photos/669576/pexels-photo-669576.jpeg);
+	background-size: cover;
+	background-position: center center;
+	padding-bottom: 40px;
+}
+
+</style>
+
+</head>
+
+<body>
+	<div class="bgview">
+
+		<div class="container">
+
+		<div class="signout">
+			<h3 th:inline="text">Hello
+				[[${#httpServletRequest.remoteUser}]]!</h3>
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" class="btn btn-danger" value="Sign Out" />
+			</form>
+		</div>
+			<h1>Exercise Planner</h1>
+
+			<table class="table">
+				<tr>
+					<th>Workout</th>
+					<th>Weight</th>
+					<th>Sets</th>
+					<th>Reps</th>
+					<th>Category</th>
+
+				</tr>
+				<tr th:each="exercise : ${exercises}">
+					<td th:text="${exercise.title}"></td>
+					<td th:text="${exercise.weight}"></td>
+					<td th:text="${exercise.set}"></td>
+					<td th:text="${exercise.rep}"></td>
+					<td th:text="${exercise.category.name}"></td>
+
+
+					<td><a th:href="@{/edit/{id}(id=${exercise.id})}"
+						class="btn btn-primary">Edit</a> <a
+						th:href="@{/delete/{id}(id=${exercise.id})}"
+						class="btn btn-danger">Delete</a></td>
+
+				</tr>
+			</table>
+
+			<a href="/addexercise" class="btn btn-success">Add Exercise</a>
+			
+			<button onclick="printPlan()" class="btn btn-danger">Print the Plan</button>
+
+		</div>
+
+	</div>
+
+	<script>
+		function printPlan() {
+			window.print();
+		}
+	</script>
+
+</body>
+</html>
+
+

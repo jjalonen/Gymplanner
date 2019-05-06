@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+<title>Edit Exercise</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" />
+</head>
+
+<body>
+	<div class="bgview"
+		style="background-image: url('https://images.pexels.com/photos/669576/pexels-photo-669576.jpeg'); background-size: cover; background-position: center center;">
+		<br />
+		<div class="container">
+			<h1>Edit Exercise</h1>
+
+			<form th:object="${exercise}" th:action="@{../save}" action="#"
+				method="post">
+				<div class="form-group">
+
+					<label for="category">Category</label> <select id="catlist"
+						th:field="*{category}" class="form-control">
+						<option th:each="category: ${categories}"
+							th:value="${category.categoryId}" th:text="${category.name}">
+						</option>
+					</select> <label for="id">Id</label> <input class="form-control" type="text"
+						id="id" th:field="*{id}" /> <label for="title">Workout</label> <input
+						class="form-control" type="text" id="title" th:field="*{title}" />
+					<label for="id">Weight</label> <input class="form-control"
+						type="text" id="id" th:field="*{weight}" /> <label for="set">Sets</label>
+					<input class="form-control" type="text" id="set" th:field="*{set}" />
+					<label for="price">Reps</label> <input class="form-control"
+						type="text" id="rep" th:field="*{rep}" />
+
+				</div>
+				<input type="submit" class="btn btn-success" value="Save"></input>
+			</form>
+		</div>
+		<br />
+	</div>
+</body>
+</html>
