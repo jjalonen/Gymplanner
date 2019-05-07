@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.example.Gymplanner.service.UserService;
-import com.example.Gymplanner.service.UserServiceImpl;
+
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
